@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">simple-currency-exchange</string>
+    <string name="some_error">Some Error Occurred</string>
+</resources>
