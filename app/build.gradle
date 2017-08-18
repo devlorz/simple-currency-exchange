@@ -21,6 +21,28 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "color"
+
+    // If you need to add more flavors, consider using flavor dimensions.
+    productFlavors {
+        mock {
+            applicationIdSuffix = ".mock"
+            dimension "color"
+
+        }
+        prod {
+            dimension "color"
+        }
+    }
+
+    // Remove mockRelease as it's not needed.
+    android.variantFilter { variant ->
+        if(variant.buildType.name.equals('release')
+                && variant.getFlavors().get(0).name.equals('mock')) {
+            variant.setIgnore(true);
+        }
+    }
 }
 
 kapt {
@@ -53,4 +75,9 @@ dependencies {
     // reactive
     compile "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
     compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+
+    // test
+    testCompile "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    compile "org.mockito:mockito-core:$rootProject.mockitoVersion" // For instrumentation tests on Android devices and emulators
+    androidTestCompile "org.mockito:mockito-android:$rootProject.mockitoVersion"
 }
