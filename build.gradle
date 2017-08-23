@@ -33,4 +33,5 @@ ext {
     rxandroidVersion = '2.0.1'
     supportLibraryVersion = '25.2.0'
     mockitoVersion = '2.7.1'
+    robolectricVersion = '3.3'
 }

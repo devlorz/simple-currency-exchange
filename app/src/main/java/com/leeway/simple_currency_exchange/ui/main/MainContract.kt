@@ -9,6 +9,18 @@ import com.leeway.simple_currency_exchange.ui.base.MvpView
 interface MainContract {
 
     interface Presenter<V:MainContract.View>: MvpPresenter<V> {
+        fun onBtnZeroClick()
+        fun onBtnOneClick()
+        fun onBtnTwoClick()
+        fun onBtnThreeClick()
+        fun onBtnFourClick()
+        fun onBtnFiveClick()
+        fun onBtnSixClick()
+        fun onBtnSevenClick()
+        fun onBtnEightClick()
+        fun onBtnNineClick()
+        fun onBtnDotClick()
+        fun onBtnDeleteClick()
 
     }
 

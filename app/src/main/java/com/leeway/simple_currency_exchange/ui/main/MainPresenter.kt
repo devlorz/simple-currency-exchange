@@ -14,4 +14,51 @@ constructor(dataManager: DataManager,
             compositeDisposable: CompositeDisposable) :
         BasePresenter<V>(dataManager, compositeDisposable), MainContract.Presenter<V> {
 
+    override fun onBtnZeroClick() {
+
+    }
+
+    override fun onBtnOneClick() {
+
+    }
+
+    override fun onBtnTwoClick() {
+
+    }
+
+    override fun onBtnThreeClick() {
+
+    }
+
+    override fun onBtnFourClick() {
+
+    }
+
+    override fun onBtnFiveClick() {
+
+    }
+
+    override fun onBtnSixClick() {
+
+    }
+
+    override fun onBtnSevenClick() {
+
+    }
+
+    override fun onBtnEightClick() {
+
+    }
+
+    override fun onBtnNineClick() {
+
+    }
+
+    override fun onBtnDotClick() {
+
+    }
+
+    override fun onBtnDeleteClick() {
+
+    }
 }

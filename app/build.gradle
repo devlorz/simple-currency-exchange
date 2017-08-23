@@ -80,4 +80,6 @@ dependencies {
     testCompile "org.mockito:mockito-core:$rootProject.mockitoVersion"
     compile "org.mockito:mockito-core:$rootProject.mockitoVersion" // For instrumentation tests on Android devices and emulators
     androidTestCompile "org.mockito:mockito-android:$rootProject.mockitoVersion"
+    testCompile "org.robolectric:robolectric:$rootProject.robolectricVersion"
+    testCompile "org.robolectric:shadows-support-v4:$rootProject.robolectricVersion"
 }

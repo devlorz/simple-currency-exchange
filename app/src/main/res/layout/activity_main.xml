@@ -14,33 +14,34 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:background="@color/gray"
             android:paddingLeft="@dimen/spacing_8"
-            android:paddingRight="@dimen/spacing_8"
-            android:background="@color/gray">
+            android:paddingRight="@dimen/spacing_8">
 
             <ImageView
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/ic_thailand"
-                android:layout_height="match_parent" />
+                android:src="@drawable/ic_thailand" />
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
                 style="@style/TextStyle.SubTitle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:text="THB"
-                android:textColor="@color/white"
-                android:layout_height="match_parent" />
+                android:textColor="@color/white" />
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="3"
+                android:id="@+id/moneyFrom"
                 style="@style/TextStyle.Title"
-                android:gravity="center|end"
-                android:textColor="@color/white"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="0"/>
+                android:layout_weight="3.5"
+                android:gravity="center|end"
+                android:text="0"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
@@ -48,34 +49,34 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:background="@color/gray"
             android:paddingLeft="@dimen/spacing_8"
-            android:paddingRight="@dimen/spacing_8"
-            android:background="@color/gray">
+            android:paddingRight="@dimen/spacing_8">
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_japan"
                 android:layout_height="match_parent"
-                />
+                android:layout_weight="1"
+                android:src="@drawable/ic_japan" />
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
                 style="@style/TextStyle.SubTitle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:text="JPY"
-                android:textColor="@color/white"
-                android:layout_height="match_parent" />
+                android:textColor="@color/white" />
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="3"
+                android:id="@+id/moneyTo"
                 style="@style/TextStyle.Title"
-                android:gravity="center|end"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textColor="@color/white"
-                android:text="0"/>
+                android:layout_weight="3.5"
+                android:gravity="center|end"
+                android:text="0"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
@@ -88,8 +89,8 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <Button
@@ -132,8 +133,8 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <Button
@@ -176,8 +177,8 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <Button
