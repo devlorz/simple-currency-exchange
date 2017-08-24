@@ -41,20 +41,25 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
     }
 
     override fun onClick(view: View?) {
+        val currentValue = moneyFrom.text.toString()
         when(view) {
-            btnZero -> mainPresenter.onBtnZeroClick()
-            btnOne -> mainPresenter.onBtnOneClick()
-            btnTwo -> mainPresenter.onBtnTwoClick()
-            btnThree -> mainPresenter.onBtnThreeClick()
-            btnFour -> mainPresenter.onBtnFourClick()
-            btnFive -> mainPresenter.onBtnFiveClick()
-            btnSix -> mainPresenter.onBtnSixClick()
-            btnSeven -> mainPresenter.onBtnSevenClick()
-            btnEight -> mainPresenter.onBtnEightClick()
-            btnNine -> mainPresenter.onBtnNineClick()
-            btnDot -> mainPresenter.onBtnDotClick()
-            btnDelete -> mainPresenter.onBtnDeleteClick()
+            btnZero -> mainPresenter.onBtnZeroClick(currentValue)
+            btnOne -> mainPresenter.onBtnOneClick(currentValue)
+            btnTwo -> mainPresenter.onBtnTwoClick(currentValue)
+            btnThree -> mainPresenter.onBtnThreeClick(currentValue)
+            btnFour -> mainPresenter.onBtnFourClick(currentValue)
+            btnFive -> mainPresenter.onBtnFiveClick(currentValue)
+            btnSix -> mainPresenter.onBtnSixClick(currentValue)
+            btnSeven -> mainPresenter.onBtnSevenClick(currentValue)
+            btnEight -> mainPresenter.onBtnEightClick(currentValue)
+            btnNine -> mainPresenter.onBtnNineClick(currentValue)
+            btnDot -> mainPresenter.onBtnDotClick(currentValue)
+            btnDelete -> mainPresenter.onBtnDeleteClick(currentValue)
         }
+    }
+
+    override fun setValue(value: String) {
+
     }
 }
 

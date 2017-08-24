@@ -9,22 +9,23 @@ import com.leeway.simple_currency_exchange.ui.base.MvpView
 interface MainContract {
 
     interface Presenter<V:MainContract.View>: MvpPresenter<V> {
-        fun onBtnZeroClick()
-        fun onBtnOneClick()
-        fun onBtnTwoClick()
-        fun onBtnThreeClick()
-        fun onBtnFourClick()
-        fun onBtnFiveClick()
-        fun onBtnSixClick()
-        fun onBtnSevenClick()
-        fun onBtnEightClick()
-        fun onBtnNineClick()
-        fun onBtnDotClick()
-        fun onBtnDeleteClick()
+        fun onBtnZeroClick(currentValue: String)
+        fun onBtnOneClick(currentValue: String)
+        fun onBtnTwoClick(currentValue: String)
+        fun onBtnThreeClick(currentValue: String)
+        fun onBtnFourClick(currentValue: String)
+        fun onBtnFiveClick(currentValue: String)
+        fun onBtnSixClick(currentValue: String)
+        fun onBtnSevenClick(currentValue: String)
+        fun onBtnEightClick(currentValue: String)
+        fun onBtnNineClick(currentValue: String)
+        fun onBtnDotClick(currentValue: String)
+        fun onBtnDeleteClick(currentValue: String)
 
     }
 
     interface View: MvpView {
+        fun setValue(value: String)
 
     }
 }

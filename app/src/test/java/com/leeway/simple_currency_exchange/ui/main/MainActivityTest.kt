@@ -28,6 +28,7 @@ class MainActivityTest {
     lateinit var activityController: ActivityController<MainActivity>
     lateinit var activity: MainActivity
 
+    lateinit var currentValue: String
 
     @Before
     @Throws(Exception::class)
@@ -35,6 +36,7 @@ class MainActivityTest {
         MockitoAnnotations.initMocks(this)
         activityController = Robolectric.buildActivity(MainActivity::class.java).create()
         activity = activityController.get()
+        currentValue = activity.moneyFrom.text.toString()
     }
 
     @Test
@@ -71,83 +73,83 @@ class MainActivityTest {
     @Throws(Exception::class)
     fun testBtnZeroClick() {
         activity.btnZero.performClick()
-        verify(activity.mainPresenter).onBtnZeroClick()
+        verify(activity.mainPresenter).onBtnZeroClick(currentValue)
     }
 
     @Test
     @Throws(Exception::class)
     fun testBtnOneClick() {
         activity.btnOne.performClick()
-        verify(activity.mainPresenter).onBtnOneClick()
+        verify(activity.mainPresenter).onBtnOneClick(currentValue)
     }
 
     @Test
     @Throws(Exception::class)
     fun testBtnTwoClick() {
         activity.btnTwo.performClick()
-        verify(activity.mainPresenter).onBtnTwoClick()
+        verify(activity.mainPresenter).onBtnTwoClick(currentValue)
     }
 
     @Test
     @Throws(Exception::class)
     fun testBtnThreeClick() {
         activity.btnThree.performClick()
-        verify(activity.mainPresenter).onBtnThreeClick()
+        verify(activity.mainPresenter).onBtnThreeClick(currentValue)
     }
 
     @Test
     @Throws(Exception::class)
     fun testBtnFourClick() {
         activity.btnFour.performClick()
-        verify(activity.mainPresenter).onBtnFourClick()
+        verify(activity.mainPresenter).onBtnFourClick(currentValue)
     }
 
     @Test
     @Throws(Exception::class)
     fun testBtnFiveClick() {
         activity.btnFive.performClick()
-        verify(activity.mainPresenter).onBtnFiveClick()
+        verify(activity.mainPresenter).onBtnFiveClick(currentValue)
     }
 
     @Test
     @Throws(Exception::class)
     fun testBtnSixClick() {
         activity.btnSix.performClick()
-        verify(activity.mainPresenter).onBtnSixClick()
+        verify(activity.mainPresenter).onBtnSixClick(currentValue)
     }
 
     @Test
     @Throws(Exception::class)
     fun testBtnSevenClick() {
         activity.btnSeven.performClick()
-        verify(activity.mainPresenter).onBtnSevenClick()
+        verify(activity.mainPresenter).onBtnSevenClick(currentValue)
     }
 
     @Test
     @Throws(Exception::class)
     fun testBtnEightClick() {
         activity.btnEight.performClick()
-        verify(activity.mainPresenter).onBtnEightClick()
+        verify(activity.mainPresenter).onBtnEightClick(currentValue)
     }
 
     @Test
     @Throws(Exception::class)
     fun testBtnNineClick() {
         activity.btnNine.performClick()
-        verify(activity.mainPresenter).onBtnNineClick()
+        verify(activity.mainPresenter).onBtnNineClick(currentValue)
     }
 
     @Test
     @Throws(Exception::class)
     fun testBtnDotClick() {
         activity.btnDot.performClick()
-        verify(activity.mainPresenter).onBtnDotClick()
+        verify(activity.mainPresenter).onBtnDotClick(currentValue)
     }
 
     @Test
     @Throws(Exception::class)
     fun testBtnDeleteClick() {
         activity.btnDelete.performClick()
-        verify(activity.mainPresenter).onBtnDeleteClick()
+        verify(activity.mainPresenter).onBtnDeleteClick(currentValue)
     }
 }
