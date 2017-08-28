@@ -59,7 +59,7 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
     }
 
     override fun setValue(value: String) {
-
+        moneyFrom.text = value
     }
 }
 

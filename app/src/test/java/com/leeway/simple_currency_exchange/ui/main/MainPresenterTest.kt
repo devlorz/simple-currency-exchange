@@ -28,7 +28,8 @@ class MainPresenterTest {
 
     lateinit var mainPresenter: MainPresenter<MainContract.View>
 
-    val mockCurrentValue = "100"
+    val mockCurrentValue = "10"
+    val mockHundredValue = "100"
 
     @Before
     @Throws(Exception::class)
@@ -57,9 +58,21 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testButtonZeroClickOnHundredValue() {
+        mainPresenter.onBtnZeroClick(mockHundredValue)
+        verify(mainView).setValue("1,000")
+    }
+
+    @Test
     fun testButtonOneClick() {
         mainPresenter.onBtnOneClick(mockCurrentValue)
         verify(mainView).setValue(mockCurrentValue + "1")
+    }
+
+    @Test
+    fun testButtonOneClickOnHundredValue() {
+        mainPresenter.onBtnOneClick(mockHundredValue)
+        verify(mainView).setValue("1,001")
     }
 
     @Test
@@ -69,9 +82,21 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testButtonTwoClickOnHundredValue() {
+        mainPresenter.onBtnTwoClick(mockHundredValue)
+        verify(mainView).setValue("1,002")
+    }
+
+    @Test
     fun testButtonThreeClick() {
         mainPresenter.onBtnThreeClick(mockCurrentValue)
         verify(mainView).setValue(mockCurrentValue + "3")
+    }
+
+    @Test
+    fun testButtonThreeClickOnHundredValue() {
+        mainPresenter.onBtnThreeClick(mockHundredValue)
+        verify(mainView).setValue("1,003")
     }
 
     @Test
@@ -81,9 +106,21 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testButtonFourClickOnHundredValue() {
+        mainPresenter.onBtnFourClick(mockHundredValue)
+        verify(mainView).setValue("1,004")
+    }
+
+    @Test
     fun testButtonFiveClick() {
         mainPresenter.onBtnFiveClick(mockCurrentValue)
         verify(mainView).setValue(mockCurrentValue + "5")
+    }
+
+    @Test
+    fun testButtonFiveClickOnHundredValue() {
+        mainPresenter.onBtnFiveClick(mockHundredValue)
+        verify(mainView).setValue("1,005")
     }
 
     @Test
@@ -93,9 +130,21 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testButtonSixClickOnHundredValue() {
+        mainPresenter.onBtnSixClick(mockHundredValue)
+        verify(mainView).setValue("1,006")
+    }
+
+    @Test
     fun testButtonSevenClick() {
         mainPresenter.onBtnSevenClick(mockCurrentValue)
         verify(mainView).setValue(mockCurrentValue + "7")
+    }
+
+    @Test
+    fun testButtonSevenClickOnHundredValue() {
+        mainPresenter.onBtnSevenClick(mockHundredValue)
+        verify(mainView).setValue("1,007")
     }
 
     @Test
@@ -105,8 +154,20 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testButtonEightClickOnHundredValue() {
+        mainPresenter.onBtnEightClick(mockHundredValue)
+        verify(mainView).setValue("1,008")
+    }
+
+    @Test
     fun testButtonNineClick() {
         mainPresenter.onBtnNineClick(mockCurrentValue)
         verify(mainView).setValue(mockCurrentValue + "9")
+    }
+
+    @Test
+    fun testButtonNineClickOnHundredValue() {
+        mainPresenter.onBtnNineClick(mockHundredValue)
+        verify(mainView).setValue("1,009")
     }
 }

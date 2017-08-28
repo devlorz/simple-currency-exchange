@@ -3,6 +3,8 @@ package com.leeway.simple_currency_exchange.ui.main
 import com.leeway.simple_currency_exchange.data.DataManager
 import com.leeway.simple_currency_exchange.ui.base.BasePresenter
 import io.reactivex.disposables.CompositeDisposable
+import java.math.RoundingMode
+import java.text.DecimalFormat
 import javax.inject.Inject
 
 /**
@@ -64,9 +66,50 @@ constructor(dataManager: DataManager,
 
     private fun setValue(currentAmount: String, setValue: String) {
         if (currentAmount == "0") {
-            mvpView!!.setValue(setValue)
+            mvpView!!.setValue(setMoneyStringFormat(setValue))
         } else {
-            mvpView!!.setValue(currentAmount + setValue)
+            mvpView!!.setValue(setMoneyStringFormat(currentAmount + setValue))
         }
+    }
+
+    private fun setMoneyStringFormat(value: String): String {
+//        var numbers = value.split("(?<=[-+*/=])".toRegex()).toMutableList()
+//        var lastNumber = numbers.last()
+//        var lastIndex = numbers.lastIndex
+//        if (lastNumber.isEmpty()) {
+//            lastNumber = numbers[numbers.lastIndex-1]
+//            lastIndex = numbers.lastIndex - 1
+//        }
+//        if (!lastNumber.matches(".*[-+*/=].*".toRegex())) {
+//            numbers[lastIndex] = getNumberFormat(numbers[lastIndex].replace(",", ""))
+//        }
+//
+//        var returnValue = ""
+//        for (number in numbers) {
+//            returnValue += number
+//        }
+
+        return getNumberFormat(value.replace(",", ""))
+    }
+
+    private fun getNumberFormat(value: String): String {
+        var intValue = value
+        var decValue = ""
+        if (value.contains(".")) {
+            val numValue = value.split("\\.".toRegex())
+            intValue = numValue.first()
+            if (numValue.size > 1) decValue = numValue[1]
+        }
+
+        val doubleValue = intValue.toDouble()
+        val formatValue = if (value.contains(".")) doubleToFormatString(doubleValue) + "." + decValue
+        else doubleToFormatString(doubleValue)
+        return formatValue
+    }
+
+    private fun doubleToFormatString(value: Double): String {
+        val decimalFormat = DecimalFormat("#,###,###,###.##")
+        decimalFormat.roundingMode = RoundingMode.CEILING
+        return decimalFormat.format(value)
     }
 }

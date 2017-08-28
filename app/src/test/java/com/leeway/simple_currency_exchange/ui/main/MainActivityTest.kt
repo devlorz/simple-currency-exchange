@@ -152,4 +152,11 @@ class MainActivityTest {
         activity.btnDelete.performClick()
         verify(activity.mainPresenter).onBtnDeleteClick(currentValue)
     }
+
+    @Test
+    @Throws(Exception::class)
+    fun testSetValue() {
+        activity.setValue("100")
+        assertThat(activity.moneyFrom.text.toString(), `is`("100"))
+    }
 }
