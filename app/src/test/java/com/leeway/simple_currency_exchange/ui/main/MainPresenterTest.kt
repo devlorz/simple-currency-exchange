@@ -170,4 +170,16 @@ class MainPresenterTest {
         mainPresenter.onBtnNineClick(mockHundredValue)
         verify(mainView).setValue("1,009")
     }
+
+    @Test
+    fun testButtonDotClick() {
+        mainPresenter.onBtnDotClick(mockCurrentValue)
+        verify(mainView).setValue("10.")
+    }
+
+    @Test
+    fun testButtonDotClickOnDotValue() {
+        mainPresenter.onBtnDotClick("10.")
+        verify(mainView).setValue("10.")
+    }
 }

@@ -57,7 +57,11 @@ constructor(dataManager: DataManager,
     }
 
     override fun onBtnDotClick(currentValue: String) {
-
+        if (currentValue.contains(".")) {
+            mvpView!!.setValue(currentValue)
+        } else {
+            mvpView!!.setValue(currentValue + ".")
+        }
     }
 
     override fun onBtnDeleteClick(currentValue: String) {
