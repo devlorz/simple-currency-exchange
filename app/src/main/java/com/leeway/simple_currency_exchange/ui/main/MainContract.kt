@@ -26,6 +26,8 @@ interface MainContract {
 
     interface View: MvpView {
         fun setValue(value: String)
+        fun showMoreThanTenDigitToast()
+        fun showMoreThanTwoDecimalToast()
 
     }
 }

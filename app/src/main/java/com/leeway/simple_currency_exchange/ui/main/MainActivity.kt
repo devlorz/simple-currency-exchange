@@ -1,7 +1,9 @@
 package com.leeway.simple_currency_exchange.ui.main
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.leeway.simple_currency_exchange.R
 import com.leeway.simple_currency_exchange.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -60,6 +62,14 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
 
     override fun setValue(value: String) {
         moneyFrom.text = value
+    }
+
+    override fun showMoreThanTenDigitToast() {
+        toast("Cannot input more than 10 digits")
+    }
+
+    override fun showMoreThanTwoDecimalToast() {
+        toast("Cannot input more than 2 decimal point")
     }
 }
 

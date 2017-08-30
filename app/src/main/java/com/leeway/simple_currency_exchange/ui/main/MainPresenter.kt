@@ -65,35 +65,42 @@ constructor(dataManager: DataManager,
     }
 
     override fun onBtnDeleteClick(currentValue: String) {
+        if(currentValue.length > 1) {
+            val newValue = currentValue.substring(0, currentValue.length - 1)
+            mvpView!!.setValue(getNumberFormat(newValue.replace(",", "")))
+        } else {
+            mvpView!!.setValue("0")
+        }
+    }
 
+    private fun isMoreThanTenDigit(value: String): Boolean {
+        return value.replace(",", "").replace(".", "").length > 10
+    }
+
+    private fun validateAndSetValue(newValue: String) {
+        if (isMoreThanTenDigit(newValue)) {
+            mvpView!!.showMoreThanTenDigitToast()
+        } else {
+            mvpView!!.setValue(getNumberFormat(newValue.replace(",","")))
+        }
     }
 
     private fun setValue(currentAmount: String, setValue: String) {
         if (currentAmount == "0") {
-            mvpView!!.setValue(setMoneyStringFormat(setValue))
+            mvpView!!.setValue(setValue)
         } else {
-            mvpView!!.setValue(setMoneyStringFormat(currentAmount + setValue))
+            val newValue = currentAmount + setValue
+            if (newValue.contains(".")) {
+                val valueSplitByDot = newValue.split("(?<=[.])".toRegex())
+                if (valueSplitByDot[1].length > 2) {
+                    mvpView!!.showMoreThanTwoDecimalToast()
+                } else {
+                    validateAndSetValue(newValue)
+                }
+            } else {
+                validateAndSetValue(newValue)
+            }
         }
-    }
-
-    private fun setMoneyStringFormat(value: String): String {
-//        var numbers = value.split("(?<=[-+*/=])".toRegex()).toMutableList()
-//        var lastNumber = numbers.last()
-//        var lastIndex = numbers.lastIndex
-//        if (lastNumber.isEmpty()) {
-//            lastNumber = numbers[numbers.lastIndex-1]
-//            lastIndex = numbers.lastIndex - 1
-//        }
-//        if (!lastNumber.matches(".*[-+*/=].*".toRegex())) {
-//            numbers[lastIndex] = getNumberFormat(numbers[lastIndex].replace(",", ""))
-//        }
-//
-//        var returnValue = ""
-//        for (number in numbers) {
-//            returnValue += number
-//        }
-
-        return getNumberFormat(value.replace(",", ""))
     }
 
     private fun getNumberFormat(value: String): String {

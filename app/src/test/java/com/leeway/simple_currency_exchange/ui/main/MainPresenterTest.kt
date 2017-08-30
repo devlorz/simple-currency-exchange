@@ -64,6 +64,12 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testButtonZeroClickOnDecimalValue() {
+        mainPresenter.onBtnZeroClick("10.0")
+        verify(mainView).setValue("10.00")
+    }
+
+    @Test
     fun testButtonOneClick() {
         mainPresenter.onBtnOneClick(mockCurrentValue)
         verify(mainView).setValue(mockCurrentValue + "1")
@@ -182,4 +188,49 @@ class MainPresenterTest {
         mainPresenter.onBtnDotClick("10.")
         verify(mainView).setValue("10.")
     }
+
+    @Test
+    fun testButtonDeleteClickOnNormalValue() {
+        mainPresenter.onBtnDeleteClick("100")
+        verify(mainView).setValue("10")
+    }
+
+    @Test
+    fun testButtonDeleteClickOnDotValue() {
+        mainPresenter.onBtnDeleteClick("10.0")
+        verify(mainView).setValue("10.")
+        mainPresenter.onBtnDeleteClick("1,000.0")
+        verify(mainView).setValue("1,000.")
+    }
+
+    @Test
+    fun testButtonDeleteClickOnThousandValue() {
+        mainPresenter.onBtnDeleteClick("1,000,000")
+        verify(mainView).setValue("100,000")
+    }
+
+    @Test
+    fun testButtonDeleteClickOnSingleValue() {
+        mainPresenter.onBtnDeleteClick("1")
+        verify(mainView).setValue("0")
+    }
+
+    @Test
+    fun testValidateNotMoreThanTenDigit() {
+        mainPresenter.onBtnZeroClick("1,000,000,000")
+        verify(mainView).showMoreThanTenDigitToast()
+    }
+
+    @Test
+    fun testValidateNotMoreThanTenDigitOnDecimalValue() {
+        mainPresenter.onBtnZeroClick("100,000,000.0")
+        verify(mainView).showMoreThanTenDigitToast()
+    }
+
+    @Test
+    fun testValidateNotMoreThanTwoDecimalPoint() {
+        mainPresenter.onBtnZeroClick("10.00")
+        verify(mainView).showMoreThanTwoDecimalToast()
+    }
+
 }

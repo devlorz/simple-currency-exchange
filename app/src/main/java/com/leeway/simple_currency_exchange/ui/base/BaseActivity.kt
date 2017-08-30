@@ -1,6 +1,7 @@
 package com.leeway.simple_currency_exchange.ui.base
 
 import android.annotation.TargetApi
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.pm.PackageManager
@@ -11,6 +12,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import android.widget.Toast
 import com.leeway.simple_currency_exchange.MainApplication
 import com.leeway.simple_currency_exchange.R
 import com.leeway.simple_currency_exchange.di.component.ActivityComponent
@@ -91,5 +93,9 @@ abstract class BaseActivity: AppCompatActivity(), MvpView {
         val textView = sbView.findViewById(android.support.design.R.id.snackbar_text) as TextView
         textView.setTextColor(ContextCompat.getColor(this, R.color.white))
         snackbar.show()
+    }
+
+    fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
+        Toast.makeText(this, message, duration).show()
     }
 }
