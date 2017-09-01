@@ -21,6 +21,7 @@ interface MainContract {
         fun onBtnNineClick(currentValue: String)
         fun onBtnDotClick(currentValue: String)
         fun onBtnDeleteClick(currentValue: String)
+        fun getExchangeRate()
 
     }
 

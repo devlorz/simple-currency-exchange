@@ -40,6 +40,8 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
         btnNine.setOnClickListener(this)
         btnDot.setOnClickListener(this)
         btnDelete.setOnClickListener(this)
+
+        mainPresenter.getExchangeRate()
     }
 
     override fun onClick(view: View?) {

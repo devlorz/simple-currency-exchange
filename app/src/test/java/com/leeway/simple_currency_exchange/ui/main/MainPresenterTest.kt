@@ -233,4 +233,9 @@ class MainPresenterTest {
         verify(mainView).showMoreThanTwoDecimalToast()
     }
 
+    @Test
+    fun testFetchDataFromCurrencyExchangeAPI() {
+
+    }
+
 }
