@@ -1,6 +1,9 @@
 package com.leeway.simple_currency_exchange.ui.main
 
 import com.leeway.simple_currency_exchange.data.DataManager
+import com.leeway.simple_currency_exchange.data.model.CurrencyList
+import com.leeway.simple_currency_exchange.data.model.DailyExchageRate
+import io.reactivex.Observable
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.plugins.RxJavaPlugins
@@ -9,6 +12,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
+import org.mockito.Mockito.doReturn
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.Mockito.verify
@@ -38,6 +42,45 @@ class MainPresenterTest {
         val compositeDisposable = CompositeDisposable()
         mainPresenter = MainPresenter(dataManager, compositeDisposable)
         mainPresenter.onAttach(mainView)
+        var currecncyRate = CurrencyList(
+                AUD = 2.0F,
+                BGN = 2.0f,
+                BRL = 2.0f,
+                CAD = 2.0f,
+                CHF = 2.0f,
+                CNY = 2.0f,
+                CZK = 2.0f,
+                DKK = 2.0f,
+                EUR = 2.0f,
+                GBP = 2.0f,
+                HKD = 2.0f,
+                HRK = 2.0f,
+                HUF = 2.0f,
+                IDR = 2.0f,
+                ILS = 2.0f,
+                INR = 2.0f,
+                JPY = 2.0f,
+                KRW = 2.0f,
+                MXN = 2.0f,
+                MYR = 2.0f,
+                NOK = 2.0f,
+                NZD = 2.0f,
+                PHP = 2.0f,
+                PLN = 2.0f,
+                RON = 2.0f,
+                RUB = 2.0f,
+                SEK = 2.0f,
+                SGD = 2.0f,
+                THB = 2.0f,
+                TRY = 2.0f,
+                USD = 2.0f,
+                ZAR = 2.0f
+        )
+        var exchangeRate = DailyExchageRate(
+                base = "THB",
+                date = "test date",
+                rates = currecncyRate)
+        mainPresenter.dailyExchangeRate = exchangeRate
 
         RxJavaPlugins.setIoSchedulerHandler { Schedulers.trampoline() }
         RxJavaPlugins.setComputationSchedulerHandler { Schedulers.trampoline() }
@@ -55,6 +98,7 @@ class MainPresenterTest {
     fun testButtonZeroClickOnZero() {
         mainPresenter.onBtnZeroClick("0")
         verify(mainView).setValue("0")
+        verify(mainView).setExchangeValue("0")
     }
 
     @Test
@@ -234,8 +278,19 @@ class MainPresenterTest {
     }
 
     @Test
-    fun testFetchDataFromCurrencyExchangeAPI() {
+    fun testOneClickOnZero() {
+        mainPresenter.onBtnOneClick("0")
+        verify(mainView).setValue("1")
+        val newValue = 1 * mainPresenter.dailyExchangeRate!!.rates.JPY
+        verify(mainView).setExchangeValue("2")
+    }
 
+    @Test
+    fun testFetchDataFromCurrencyExchangeAPI() {
+//        val sampleDailyExchangeRate : DailyExchageRate
+//        sampleDailyExchangeRate
+//        doReturn(Observable.just())
+//        mainPresenter.getExchangeRate()
     }
 
 }

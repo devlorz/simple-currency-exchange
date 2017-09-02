@@ -160,4 +160,11 @@ class MainActivityTest {
         activity.setValue("100")
         assertThat(activity.moneyFrom.text.toString(), `is`("100"))
     }
+
+    @Test
+    @Throws(Exception::class)
+    fun testSetMoneyToValue() {
+        activity.setExchangeValue("100")
+        assertThat(activity.moneyTo.text.toString(), `is`("100"))
+    }
 }

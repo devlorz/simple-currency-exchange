@@ -24,7 +24,5 @@ class AppApiHelper @Inject constructor(val apiHeader: ApiHeader) : ApiHelper {
 
     override fun getDailyExchangeRate(): Observable<DailyExchageRate> {
         return exchangeService.getExchangeRate("THB")
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
     }
 }

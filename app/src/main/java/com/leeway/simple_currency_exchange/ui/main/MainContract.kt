@@ -29,6 +29,8 @@ interface MainContract {
         fun setValue(value: String)
         fun showMoreThanTenDigitToast()
         fun showMoreThanTwoDecimalToast()
+        fun showError(errorMessage: String)
+        fun  setExchangeValue(toString: String)
 
     }
 }

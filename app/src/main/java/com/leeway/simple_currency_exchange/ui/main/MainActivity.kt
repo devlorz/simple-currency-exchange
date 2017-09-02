@@ -73,5 +73,13 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
     override fun showMoreThanTwoDecimalToast() {
         toast("Cannot input more than 2 decimal point")
     }
+
+    override fun showError(errorMessage: String) {
+        toast(errorMessage)
+    }
+
+    override fun setExchangeValue(exchangeValue: String) {
+        moneyTo.text = exchangeValue
+    }
 }
 

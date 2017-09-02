@@ -7,7 +7,7 @@ import java.util.*
  */
 
 data class DailyExchageRate(
-        val base: String,
-        val date: String,
-        val rates: CurrencyList
+        var base: String,
+        var date: String,
+        var rates: CurrencyList
 )

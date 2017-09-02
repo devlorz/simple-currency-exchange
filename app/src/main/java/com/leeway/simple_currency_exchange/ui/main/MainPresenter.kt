@@ -1,8 +1,11 @@
 package com.leeway.simple_currency_exchange.ui.main
 
 import com.leeway.simple_currency_exchange.data.DataManager
+import com.leeway.simple_currency_exchange.data.model.DailyExchageRate
 import com.leeway.simple_currency_exchange.ui.base.BasePresenter
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import javax.inject.Inject
@@ -10,13 +13,27 @@ import javax.inject.Inject
 /**
  * Created by Lee Lorz on 7/15/2017.
  */
+
 class MainPresenter<V: MainContract.View>
 @Inject
 constructor(dataManager: DataManager,
             compositeDisposable: CompositeDisposable) :
         BasePresenter<V>(dataManager, compositeDisposable), MainContract.Presenter<V> {
-    override fun getExchangeRate() {
 
+    var dailyExchangeRate: DailyExchageRate? = null
+
+    override fun getExchangeRate() {
+        compositeDisposable.add(dataManager
+                .getDailyExchangeRate()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    result -> dailyExchangeRate = result
+//                    mvpView!!.showError(dailyExchangeRate.toString())
+                },{
+                    error -> mvpView!!.showError(error.message.toString())
+                })
+        )
     }
 
     override fun onBtnZeroClick(currentValue: String) {
@@ -85,12 +102,14 @@ constructor(dataManager: DataManager,
             mvpView!!.showMoreThanTenDigitToast()
         } else {
             mvpView!!.setValue(getNumberFormat(newValue.replace(",","")))
+            calculateCurrencyExchange(newValue.replace(",",""))
         }
     }
 
     private fun setValue(currentAmount: String, setValue: String) {
         if (currentAmount == "0") {
             mvpView!!.setValue(setValue)
+            calculateCurrencyExchange(setValue)
         } else {
             val newValue = currentAmount + setValue
             if (newValue.contains(".")) {
@@ -106,6 +125,17 @@ constructor(dataManager: DataManager,
         }
     }
 
+    private fun calculateCurrencyExchange(value: String) {
+        val baseValue = value.toDouble()
+        if (dailyExchangeRate == null) {
+            mvpView!!.setExchangeValue(value)
+        } else {
+            val rate = dailyExchangeRate!!.rates.JPY
+            val calculatedValue = baseValue*rate
+            mvpView!!.setExchangeValue(doubleToFormatString(calculatedValue))
+        }
+    }
+
     private fun getNumberFormat(value: String): String {
         var intValue = value
         var decValue = ""
@@ -116,7 +146,7 @@ constructor(dataManager: DataManager,
         }
 
         val doubleValue = intValue.toDouble()
-        val formatValue = if (value.contains(".")) doubleToFormatString(doubleValue) + "." + decValue
+        val formatValue = if (value.contains(".") && decValue != "0") doubleToFormatString(doubleValue) + "." + decValue
         else doubleToFormatString(doubleValue)
         return formatValue
     }
