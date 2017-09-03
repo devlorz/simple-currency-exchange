@@ -81,6 +81,7 @@ constructor(dataManager: DataManager,
             mvpView!!.setValue(currentValue)
         } else {
             mvpView!!.setValue(currentValue + ".")
+            calculateCurrencyExchange(currentValue.replace(",", "") + ".0")
         }
     }
 
@@ -88,8 +89,10 @@ constructor(dataManager: DataManager,
         if(currentValue.length > 1) {
             val newValue = currentValue.substring(0, currentValue.length - 1)
             mvpView!!.setValue(getNumberFormat(newValue.replace(",", "")))
+            calculateCurrencyExchange(newValue.replace(",", ""))
         } else {
             mvpView!!.setValue("0")
+            mvpView!!.setExchangeValue("0")
         }
     }
 
@@ -146,7 +149,7 @@ constructor(dataManager: DataManager,
         }
 
         val doubleValue = intValue.toDouble()
-        val formatValue = if (value.contains(".") && decValue != "0") doubleToFormatString(doubleValue) + "." + decValue
+        val formatValue = if (value.contains(".")) doubleToFormatString(doubleValue) + "." + decValue
         else doubleToFormatString(doubleValue)
         return formatValue
     }

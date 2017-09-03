@@ -286,6 +286,41 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testZeroClickOnHundredValue() {
+        mainPresenter.onBtnZeroClick("100")
+        verify(mainView).setValue("1,000")
+        verify(mainView).setExchangeValue("2,000")
+    }
+
+    @Test
+    fun testDeleteButtonClickOnThousandValue() {
+        mainPresenter.onBtnDeleteClick("1,000")
+        verify(mainView).setValue("100")
+        verify(mainView).setExchangeValue("200")
+    }
+
+    @Test
+    fun testDeleteButtonOnSingleValue() {
+        mainPresenter.onBtnDeleteClick("1")
+        verify(mainView).setValue("0")
+        verify(mainView).setExchangeValue("0")
+    }
+
+    @Test
+    fun testDotButtonClickOnThousandValue() {
+        mainPresenter.onBtnDotClick("1,000")
+        verify(mainView).setValue("1,000.")
+        verify(mainView).setExchangeValue("2,000")
+    }
+
+    @Test
+    fun testZeroButtonClickOnDotValue() {
+        mainPresenter.onBtnZeroClick("1.")
+        verify(mainView).setValue("1.0")
+        verify(mainView).setExchangeValue("2")
+    }
+
+    @Test
     fun testFetchDataFromCurrencyExchangeAPI() {
 //        val sampleDailyExchangeRate : DailyExchageRate
 //        sampleDailyExchangeRate
