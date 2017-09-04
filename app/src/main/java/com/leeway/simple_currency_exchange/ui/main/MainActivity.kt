@@ -41,6 +41,7 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
         btnDot.setOnClickListener(this)
         btnDelete.setOnClickListener(this)
 
+        mainPresenter.getBaseCurrency()
         mainPresenter.getExchangeRate()
     }
 

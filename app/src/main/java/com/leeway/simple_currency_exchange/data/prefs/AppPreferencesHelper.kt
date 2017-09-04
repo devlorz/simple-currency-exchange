@@ -16,6 +16,16 @@ class AppPreferencesHelper
 constructor(@ApplicationContext context: Context,
             @PreferenceInfo prefFileName: String) : PreferencesHelper {
 
-    var pref: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
+    val PREF_KEY_BASE_CURRENCY = "PREF_KEY_BASE_CURRENCY"
 
+    var pref: SharedPreferences = context
+            .getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
+
+    override fun getBaseCurrency(): String {
+        return pref.getString(PREF_KEY_BASE_CURRENCY, "")
+    }
+
+    override fun setBaseCurrency(currency: String) {
+        pref.edit().putString(PREF_KEY_BASE_CURRENCY, currency).apply()
+    }
 }

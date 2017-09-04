@@ -50,6 +50,7 @@ class MainActivityTest {
     fun testOnCreate() {
         assertThat(activity.mainPresenter, `is`(notNullValue()))
         Mockito.verify(activity.mainPresenter).onAttach(activity)
+        verify(activity.mainPresenter).getBaseCurrency()
         verify(activity.mainPresenter).getExchangeRate()
     }
 

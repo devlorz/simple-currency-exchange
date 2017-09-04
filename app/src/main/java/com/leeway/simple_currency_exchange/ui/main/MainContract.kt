@@ -22,6 +22,7 @@ interface MainContract {
         fun onBtnDotClick(currentValue: String)
         fun onBtnDeleteClick(currentValue: String)
         fun getExchangeRate()
+        fun getBaseCurrency()
 
     }
 

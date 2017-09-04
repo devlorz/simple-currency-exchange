@@ -22,6 +22,10 @@ constructor(dataManager: DataManager,
 
     var dailyExchangeRate: DailyExchageRate? = null
 
+    override fun getBaseCurrency() {
+
+    }
+
     override fun getExchangeRate() {
         compositeDisposable.add(dataManager
                 .getDailyExchangeRate()

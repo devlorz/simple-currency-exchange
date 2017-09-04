@@ -21,6 +21,14 @@ constructor(@ApplicationContext val context: Context,
             val dbHelper: DbHelper,
             val preferencesHelper: PreferencesHelper,
             val apiHelper: ApiHelper) : DataManager {
+    override fun setBaseCurrency(currency: String) {
+        preferencesHelper.setBaseCurrency(currency)
+    }
+
+    override fun getBaseCurrency(): String {
+        return preferencesHelper.getBaseCurrency()
+    }
+
     override fun getDailyExchangeRate(): Observable<DailyExchageRate> {
         return apiHelper.getDailyExchangeRate()
     }
