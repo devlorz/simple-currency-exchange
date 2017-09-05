@@ -21,14 +21,27 @@ constructor(dataManager: DataManager,
         BasePresenter<V>(dataManager, compositeDisposable), MainContract.Presenter<V> {
 
     var dailyExchangeRate: DailyExchageRate? = null
+    var baseCurrency: String = ""
+
+    override fun setBaseCurrency() {
+        val base = dataManager.getBaseCurrency()
+        if(base.isEmpty()) {
+            mvpView!!.showSelectCurrencyDialog()
+        }
+    }
 
     override fun getBaseCurrency() {
-
+        var baseCurrency = dataManager.getBaseCurrency()
+        if (baseCurrency.isEmpty()) {
+            baseCurrency = "USD"
+            dataManager.setBaseCurrency(baseCurrency)
+        }
+        this.baseCurrency = baseCurrency
     }
 
     override fun getExchangeRate() {
         compositeDisposable.add(dataManager
-                .getDailyExchangeRate()
+                .getDailyExchangeRate(baseCurrency)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({

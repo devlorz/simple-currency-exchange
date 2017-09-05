@@ -9,7 +9,7 @@ import io.reactivex.Observable
  * Created by Lee Lorz on 7/10/2017.
  */
 interface DataManager: ApiHelper, PreferencesHelper {
-    override fun getDailyExchangeRate(): Observable<DailyExchageRate>
+    override fun getDailyExchangeRate(base: String): Observable<DailyExchageRate>
     override fun getBaseCurrency(): String
     override fun setBaseCurrency(currency: String)
 }

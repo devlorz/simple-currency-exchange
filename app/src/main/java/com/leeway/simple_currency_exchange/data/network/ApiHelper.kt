@@ -7,5 +7,5 @@ import io.reactivex.Observable
  * Created by Lee Lorz on 7/12/2017.
  */
 interface ApiHelper {
-    fun getDailyExchangeRate(): Observable<DailyExchageRate>
+    fun getDailyExchangeRate(base: String): Observable<DailyExchageRate>
 }

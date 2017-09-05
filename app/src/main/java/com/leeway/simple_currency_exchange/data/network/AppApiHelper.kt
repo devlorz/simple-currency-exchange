@@ -22,7 +22,7 @@ class AppApiHelper @Inject constructor(val apiHeader: ApiHeader) : ApiHelper {
 
     var disposable: Disposable? = null
 
-    override fun getDailyExchangeRate(): Observable<DailyExchageRate> {
-        return exchangeService.getExchangeRate("THB")
+    override fun getDailyExchangeRate(base: String): Observable<DailyExchageRate> {
+        return exchangeService.getExchangeRate(base)
     }
 }

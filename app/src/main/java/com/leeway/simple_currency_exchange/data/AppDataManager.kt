@@ -29,8 +29,8 @@ constructor(@ApplicationContext val context: Context,
         return preferencesHelper.getBaseCurrency()
     }
 
-    override fun getDailyExchangeRate(): Observable<DailyExchageRate> {
-        return apiHelper.getDailyExchangeRate()
+    override fun getDailyExchangeRate(base: String): Observable<DailyExchageRate> {
+        return apiHelper.getDailyExchangeRate(base)
     }
 
 }

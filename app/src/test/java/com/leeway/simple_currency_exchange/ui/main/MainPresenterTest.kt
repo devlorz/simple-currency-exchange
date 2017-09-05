@@ -321,6 +321,13 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testSetBaseCurrency() {
+        doReturn("").`when`(dataManager).getBaseCurrency()
+        mainPresenter.setBaseCurrency()
+        verify(mainView).showSelectCurrencyDialog()
+    }
+
+    @Test
     fun testFetchDataFromCurrencyExchangeAPI() {
 //        val sampleDailyExchangeRate : DailyExchageRate
 //        sampleDailyExchangeRate

@@ -41,6 +41,7 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
         btnDot.setOnClickListener(this)
         btnDelete.setOnClickListener(this)
 
+        mainPresenter.setBaseCurrency()
         mainPresenter.getBaseCurrency()
         mainPresenter.getExchangeRate()
     }
@@ -81,6 +82,10 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
 
     override fun setExchangeValue(exchangeValue: String) {
         moneyTo.text = exchangeValue
+    }
+
+    override fun showSelectCurrencyDialog() {
+
     }
 }
 

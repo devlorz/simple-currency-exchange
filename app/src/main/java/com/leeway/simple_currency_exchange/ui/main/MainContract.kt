@@ -23,6 +23,7 @@ interface MainContract {
         fun onBtnDeleteClick(currentValue: String)
         fun getExchangeRate()
         fun getBaseCurrency()
+        fun setBaseCurrency()
 
     }
 
@@ -32,6 +33,7 @@ interface MainContract {
         fun showMoreThanTwoDecimalToast()
         fun showError(errorMessage: String)
         fun  setExchangeValue(toString: String)
+        fun showSelectCurrencyDialog()
 
     }
 }
