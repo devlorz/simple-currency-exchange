@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/android-kotlin-mvp.iml" filepath="$PROJECT_DIR$/android-kotlin-mvp.iml" />
+      <module fileurl="file://C:\src\android\simple-currency-exchange\android-kotlin-mvp.iml" filepath="C:\src\android\simple-currency-exchange\android-kotlin-mvp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/simple-currency-exchange.iml" filepath="$PROJECT_DIR$/simple-currency-exchange.iml" />
     </modules>
